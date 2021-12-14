@@ -6,4 +6,8 @@ class Movie < ApplicationRecord
   def chronological_actors
     actors.order(age: :asc)
   end
+
+  def actors_avearge_age
+    (actors.sum(:age)/actors.count.to_f).round(2)
+  end
 end
