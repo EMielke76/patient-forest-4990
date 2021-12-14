@@ -76,11 +76,11 @@ RSpec.describe 'Movie Show' do
   it 'can add an actor to a film' do
 
     within("#add-an-actor") do
-      fill_in(:actor, with: 'Denholm Elliot')
+      fill_in(:name, with: 'Denholm Elliot')
       click_on("Submit")
     end
 
-    expect(curent_path).to eq("/movies/#{crusade.id}")
+    expect(current_path).to eq("/movies/#{crusade.id}")
     expect(page).to have_content(elliot.name)
   end
 end
