@@ -3,6 +3,6 @@ class Actor < ApplicationRecord
   has_many :movies, through: :movie_actors
 
   def self.co_actors
-    require "pry"; binding.pry
+    #require "pry"; binding.pry
   end
 end
