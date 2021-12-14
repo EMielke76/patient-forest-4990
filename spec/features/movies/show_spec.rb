@@ -42,6 +42,6 @@ RSpec.describe 'Movie Show' do
 
   it 'displays the average age of the actors in the film' do
 
-    expect(page).to have_content("Average age of actors: 46.66")
-  end 
+    expect(page).to have_content("Average age of actors: 46.67")
+  end
 end
