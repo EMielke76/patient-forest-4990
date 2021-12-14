@@ -24,4 +24,10 @@ RSpec.describe Movie, type: :model do
       expect(raiders.chronological_actors).to eq([ford, davies, connery])
     end
   end
+
+  describe '#actors_average_age' do
+    it 'calculates the average ago of the actors in the movie' do
+      expect(raiders.actors_avearge_age).to eq(46.66)
+    end
+  end 
 end
