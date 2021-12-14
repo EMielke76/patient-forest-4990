@@ -64,6 +64,23 @@ RSpec.describe 'Movie Show' do
   # (You do not have to test for a sad path, for example if the name submitted is not an existing
   it 'does not display any actors that are not part of the movie' do
 
-    expect(page)
-  end 
+    expect(page).to_not have_content(crystal.name)
+    expect(page).to_not have_content(ryan.name)
+  end
+
+  it 'displays a form to add an actory to the movie' do
+
+    expect(page).to have_content("Add an Actor to this film")
+  end
+
+  it 'can add an actor to a film' do
+
+    within("#add-an-actor") do
+      fill_in(:actor, with: 'Denholm Elliot')
+      click_on("Submit")
+    end
+
+    expect(curent_path).to eq("/movies/#{crusade.id}")
+    expect(page).to have_content(elliot.name)
+  end
 end
