@@ -11,6 +11,8 @@ RSpec.describe 'Movie Show' do
     MovieActor.create!(movie: raiders, actor: ford)
     MovieActor.create!(movie: raiders, actor: connery)
     MovieActor.create!(movie: raiders, actor: davies)
+
+    visit "/movies/#{raiders.id}"
   end
   # As a user,
   # When I visit a movie's show page.
@@ -20,10 +22,21 @@ RSpec.describe 'Movie Show' do
 
   it 'displays a movies title, creation year, and genre' do
 
-    visit "/movies/#{raiders.id}"
-
     expect(page).to have_content(raiders.title)
     expect(page).to have_content(raiders.creation_year)
     expect(page).to have_content(raiders.genre)
   end
+
+  it 'displays a list of all actors in the movie' do
+
+    expect(page).to have_content(ford.name)
+    expect(page).to have_content(connery.name)
+    expect(page).to have_content(davies.name)
+  end
+
+  it 'displays actors in order of birth, youngest to oldest' do
+
+    expect(ford.name).to appear_before(davies.name)
+    expect(davies.name).to appear_before(connery.name)
+  end 
 end
