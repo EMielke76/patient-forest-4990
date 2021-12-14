@@ -21,7 +21,7 @@ RSpec.describe Movie, type: :model do
 
   describe '#chronological_actors' do
     it 'organizes actors of a movie in order of age, youngest to oldest' do
-      expect(universal.chronological_actors).to eq([ford, davies, connery])
+      expect(raiders.chronological_actors).to eq([ford, davies, connery])
     end
-  end 
+  end
 end
