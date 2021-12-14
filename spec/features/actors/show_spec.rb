@@ -27,4 +27,10 @@ RSpec.describe 'Actor Show' do
     expect(page).to have_content(ford.name)
     expect(page).to have_content(ford.age)
   end
+
+  it 'displays all the actors this actor has worked with' do
+
+    expect(page).to have_content(connery.name)
+    expect(page).to have_content(davies.name)
+  end 
 end
