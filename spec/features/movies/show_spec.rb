@@ -2,17 +2,18 @@ require 'rails_helper'
 
 RSpec.describe 'Movie Show' do
   let!(:universal) {Studio.create!(name: 'Universal Studios', location: 'Hollywood')}
-  let!(:raiders) {Movie.create!(title: 'The Last Crusade', creation_year: '1989', genre: 'Action Adventure', studio_id: universal.id)}
+  let!(:crusade) {Movie.create!(title: 'The Last Crusade', creation_year: '1989', genre: 'Action Adventure', studio_id: universal.id)}
+  let!(:jumanji) {Movie.create!(title: 'Jumanji', creation_year: '1989', genre: 'Action Adventure', studio_id: universal.id)}
   let!(:ford) {Actor.create!(name: 'Harrison Ford', age: '38' )}
   let!(:connery) {Actor.create!(name: 'Sean Connery', age: '55' )}
   let!(:davies) {Actor.create!(name: 'John Rhys-Davies', age: '47' )}
 
   before :each do
-    MovieActor.create!(movie: raiders, actor: ford)
-    MovieActor.create!(movie: raiders, actor: connery)
-    MovieActor.create!(movie: raiders, actor: davies)
+    MovieActor.create!(movie: crusade, actor: ford)
+    MovieActor.create!(movie: crusade, actor: connery)
+    MovieActor.create!(movie: crusade, actor: davies)
 
-    visit "/movies/#{raiders.id}"
+    visit "/movies/#{crusade.id}"
   end
   # As a user,
   # When I visit a movie's show page.
@@ -22,9 +23,9 @@ RSpec.describe 'Movie Show' do
 
   it 'displays a movies title, creation year, and genre' do
 
-    expect(page).to have_content(raiders.title)
-    expect(page).to have_content(raiders.creation_year)
-    expect(page).to have_content(raiders.genre)
+    expect(page).to have_content(crusade.title)
+    expect(page).to have_content(crusade.creation_year)
+    expect(page).to have_content(crusade.genre)
   end
 
   it 'displays a list of all actors in the movie' do
