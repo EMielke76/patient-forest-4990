@@ -3,4 +3,9 @@
 
 <h2>Studio name: <%= studio.name %></h2>
 <h4>Location: <%= studio.location %></h4>
+
+<% studio.movies.each do |movie| %>
+<h3><%= studio.name %>'s Films'</h3>
+<p>Title: <%= movie.title %></p>
+<% end %>
 <% end %>
